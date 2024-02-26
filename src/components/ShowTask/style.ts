@@ -12,6 +12,7 @@ export const TaskWrapper = styled.div`
   gap: 0.75rem;
   margin-left: 1rem;
   margin-right: 1rem;
+  padding: 0.5rem;
 `;
 
 export const TaskSeparator = styled.div`
@@ -34,8 +35,8 @@ export const Button = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 2.3rem;
-  height: 2.3rem;
+  width: 2rem;
+  height: 2rem;
   border: none;
   cursor: pointer;
   border-radius: 50%;
