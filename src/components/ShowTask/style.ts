@@ -26,7 +26,24 @@ export const TaskTitle = styled.h4`
 
 export const ButtonWrapper = styled.div`
   display: flex;
-  gap: 0.5rem;
+  gap: 0.75rem;
 `;
 
-export const Button = styled.button``;
+export const Button = styled.button`
+  background-color: ${({ theme }) => theme.colors.buttonBackground};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.3rem;
+  height: 2.3rem;
+  border: none;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background-color 100ms linear;
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.buttonBackgroundHover};
+  }
+  &:active {
+    background-color: ${({ theme }) => theme.colors.buttonBackgroundActive};
+  }
+`;
