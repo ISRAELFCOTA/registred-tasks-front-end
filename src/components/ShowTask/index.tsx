@@ -1,23 +1,12 @@
-import React from "react";
 import { IconSettings, IconTrash } from "@tabler/icons-react";
-import * as S from "./style";
 import { TaskDto } from "../../dto/task";
+import * as S from "./style";
 
 type Props = {
   item: TaskDto;
 };
 
 export const ShowTask = ({ item }: Props) => {
-  // const tasks = ["Task 1", "Task 2", "Task 3"];
-
-  /* const renderTasks = memo(() => {
-    return tasks.map((task, index) => (
-      <S.TaskWrapper key={index}>
-        <S.TaskTitle>{task}</S.TaskTitle>
-      </S.TaskWrapper>
-    ));
-  }); */
-
   return (
     <S.Container>
       <S.TaskWrapper>
