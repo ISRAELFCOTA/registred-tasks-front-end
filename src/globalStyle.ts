@@ -6,7 +6,7 @@ const GlobalStyle = createGlobalStyle`
     font-weight: 400;
     color-scheme: light dark;
     color: #fff;
-    background-color: #2a0f39;
+    background-color: ${({ theme }) => theme.colors.background};
     font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
@@ -15,8 +15,6 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     margin: 0;
-    display: flex;
-    place-items: center;
     min-width: 320px;
     min-height: 100vh;
     font-size: 16px;
