@@ -1,8 +1,13 @@
 import React from "react";
 import { IconSettings, IconTrash } from "@tabler/icons-react";
 import * as S from "./style";
+import { TaskDto } from "../../dto/task";
 
-export const ShowTask: React.FC = () => {
+type Props = {
+  item: TaskDto;
+};
+
+export const ShowTask = ({ item }: Props) => {
   // const tasks = ["Task 1", "Task 2", "Task 3"];
 
   /* const renderTasks = memo(() => {
@@ -16,7 +21,7 @@ export const ShowTask: React.FC = () => {
   return (
     <S.Container>
       <S.TaskWrapper>
-        <S.TaskTitle>Programar</S.TaskTitle>
+        <S.TaskTitle>{item.taskName}</S.TaskTitle>
         <S.ButtonWrapper>
           <S.Button>
             <IconSettings />
