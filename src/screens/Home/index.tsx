@@ -1,11 +1,10 @@
 import React from "react";
 import { ShowTask } from "../../components/ShowTask";
-import { IconList } from "@tabler/icons-react";
-import { useTheme } from "styled-components";
+import logo from "../../assets/logo.png";
 import * as S from "./styles";
+import { IconPlus } from "@tabler/icons-react";
 
 export const Home: React.FC = () => {
-  const theme = useTheme();
   return (
     <S.Container>
       <S.HeaderWrapper>
@@ -13,8 +12,13 @@ export const Home: React.FC = () => {
       </S.HeaderWrapper>
       <S.ShowTasksWrapper>
         <S.ShowTasksHeader>
-          <IconList color={theme.colors.lightMain} />
-          <S.ShowTasksHeaderTitle>Tarefas</S.ShowTasksHeaderTitle>
+          <S.WrapperLogoTaskTitle>
+            <S.Logo src={logo} />
+            <S.ShowTasksHeaderTitle>Tarefas</S.ShowTasksHeaderTitle>
+          </S.WrapperLogoTaskTitle>
+          <S.Button>
+            <IconPlus />
+          </S.Button>
         </S.ShowTasksHeader>
         <ShowTask />
       </S.ShowTasksWrapper>
