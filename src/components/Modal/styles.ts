@@ -5,7 +5,6 @@ export const Container = styled.div`
   padding: 1rem;
   border: 0.1rem solid ${({ theme }) => theme.colors.modalBorderColor};
   border-radius: 0.3rem;
-  width: 40%;
 `;
 
 export const HeaderWrapper = styled.div`
