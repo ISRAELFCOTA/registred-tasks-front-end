@@ -1,6 +1,5 @@
 import styled from "styled-components";
 export const Container = styled.div`
-  flex: 1;
   padding: 1rem;
 `;
 
@@ -18,7 +17,6 @@ export const Logo = styled.img`
 `;
 
 export const ShowTasksWrapper = styled.div`
-  flex: 1;
   background-color: ${({ theme }) => theme.colors.modalBackgroundColor};
   border-top: 0.1rem solid ${({ theme }) => theme.colors.modalBorderColor};
   border-left: 0.1rem solid ${({ theme }) => theme.colors.modalBorderColor};

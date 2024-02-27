@@ -28,25 +28,27 @@ export const Home: React.FC = () => {
     }
   }, []);
   return (
-    <S.Container>
-      <S.HeaderWrapper>
-        <S.HeaderTitle>Lista de tarefas</S.HeaderTitle>
-      </S.HeaderWrapper>
-      <S.ShowTasksWrapper>
-        <S.ShowTasksHeader>
-          <S.WrapperLogoTaskTitle>
-            <S.Logo src={logo} />
-            <S.ShowTasksHeaderTitle>Tarefas</S.ShowTasksHeaderTitle>
-          </S.WrapperLogoTaskTitle>
-          <S.Button onClick={() => setShowModal(true)}>
-            <IconPlus />
-          </S.Button>
-        </S.ShowTasksHeader>
-        {tasks.map((item) => (
-          <ShowTask item={item} />
-        ))}
-      </S.ShowTasksWrapper>
+    <>
+      <S.Container>
+        <S.HeaderWrapper>
+          <S.HeaderTitle>Lista de tarefas</S.HeaderTitle>
+        </S.HeaderWrapper>
+        <S.ShowTasksWrapper>
+          <S.ShowTasksHeader>
+            <S.WrapperLogoTaskTitle>
+              <S.Logo src={logo} />
+              <S.ShowTasksHeaderTitle>Tarefas</S.ShowTasksHeaderTitle>
+            </S.WrapperLogoTaskTitle>
+            <S.Button onClick={() => setShowModal(true)}>
+              <IconPlus />
+            </S.Button>
+          </S.ShowTasksHeader>
+          {tasks.map((item) => (
+            <ShowTask item={item} />
+          ))}
+        </S.ShowTasksWrapper>
+      </S.Container>
       {showModal && <Modal />}
-    </S.Container>
+    </>
   );
 };
