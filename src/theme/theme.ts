@@ -17,7 +17,8 @@ export const theme: DefaultTheme = {
     buttonBackground: "#363636",
     buttonBackgroundHover: "#252525",
     buttonBackgroundActive: "#141414",
-    modalBackgroundColor: "#161616",
+    modalBackgroundColor: "#010C140",
+    modalContentBackgroundColor: "#161616",
     modalBorderColor: "#363636",
   },
 };

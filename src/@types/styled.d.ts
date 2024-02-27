@@ -19,6 +19,7 @@ declare module "styled-components" {
       buttonBackgroundHover: string;
       buttonBackgroundActive: string;
       modalBackgroundColor: string;
+      modalContentBackgroundColor: string;
       modalBorderColor: string;
     };
   }
