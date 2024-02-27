@@ -1,7 +1,9 @@
 export type TaskDto = {
   task_id: string;
   taskName: string;
-  taskStatus: "success" | "idle" | "active";
+  taskStatus: TaskStatus;
   createDateTask: string;
   updateDateTask: string;
 };
+
+export type TaskStatus = "success" | "idle" | "active";
