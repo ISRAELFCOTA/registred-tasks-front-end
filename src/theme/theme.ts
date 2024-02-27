@@ -20,5 +20,10 @@ export const theme: DefaultTheme = {
     modalBackgroundColor: "#010C140",
     modalContentBackgroundColor: "#161616",
     modalBorderColor: "#363636",
+    inputBackgroundColor: "#262626",
+    inputBorderColor: "#424242",
+    inputBorderColorActive: "#565656",
+    inputPlaceholderColor: "",
+    inputTextColor: "",
   },
 };

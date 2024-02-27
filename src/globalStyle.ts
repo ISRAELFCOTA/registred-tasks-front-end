@@ -11,13 +11,24 @@ const GlobalStyle = createGlobalStyle`
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+
   }
   * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-
+    outline: 0;
+    
   }
+  input:-webkit-autofill,
+    input:-webkit-autofill:hover, 
+    input:-webkit-autofill:focus, 
+    input:-webkit-autofill:active {
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: #ffffff;
+        transition: background-color 300ms linear;
+        box-shadow: inset 0 0 20px 20px #212121;
+    }
   body {
     margin: 0;
     min-width: 320px;

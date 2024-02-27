@@ -21,6 +21,11 @@ declare module "styled-components" {
       modalBackgroundColor: string;
       modalContentBackgroundColor: string;
       modalBorderColor: string;
+      inputBackgroundColor: string;
+      inputBorderColor: string;
+      inputBorderColorActive: string;
+      inputPlaceholderColor: string;
+      inputTextColor: string;
     };
   }
 }
