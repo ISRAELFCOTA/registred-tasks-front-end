@@ -29,6 +29,7 @@ export const WrapperLogoTaskTitle = styled.div`
   flex-direction: row;
   display: flex;
   align-items: center;
+  width: 100%
 `;
 
 export const ShowTasksHeader = styled.div`
