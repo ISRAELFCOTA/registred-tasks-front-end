@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { IconSettings, IconTrash } from "@tabler/icons-react";
 import { TaskDto } from "../../dto/task";
 import * as S from "./style";
@@ -6,7 +7,7 @@ type Props = {
   item: TaskDto;
 };
 
-export const ShowTask = ({ item }: Props) => {
+export const ShowTask = memo(({ item }: Props) => {
   return (
     <S.Container>
       <S.TaskWrapper>
@@ -23,4 +24,4 @@ export const ShowTask = ({ item }: Props) => {
       <S.TaskSeparator />
     </S.Container>
   );
-};
+});
