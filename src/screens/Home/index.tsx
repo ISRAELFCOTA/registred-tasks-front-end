@@ -1,10 +1,11 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { ShowTask } from "../../components/ShowTask";
 import logo from "../../assets/logo.png";
+import * as S from "./styles";
 import { IconPlus } from "@tabler/icons-react";
 import { TaskDto } from "../../dto/task";
 import { HttpService } from "../../service/httpService";
-import * as S from "./styles";
+import { Modal } from "../../components/Modal";
 
 export const Home: React.FC = () => {
   const [tasks, setTasks] = useState<TaskDto[]>([]);
@@ -45,6 +46,7 @@ export const Home: React.FC = () => {
           <ShowTask item={item} />
         ))}
       </S.ShowTasksWrapper>
+      {showModal && <Modal />}
     </S.Container>
   );
 };
