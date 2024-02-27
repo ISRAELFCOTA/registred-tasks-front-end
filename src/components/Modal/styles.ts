@@ -28,7 +28,7 @@ export const Header = styled.h4`
 `;
 
 export const ContentModal = styled.main`
-  width: 30%;
+  width: 35rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -36,6 +36,18 @@ export const ContentModal = styled.main`
   background-color: ${({ theme }) => theme.colors.modalContentBackgroundColor};
   border: 1px solid ${({ theme }) => theme.colors.modalBorderColor};
   border-radius: 0.5rem;
+  @media (max-width: 1024px) {
+    width: 30rem;
+  }
+  @media (max-width: 768px) {
+    width: 25rem;
+  }
+  @media (max-width: 512px) {
+    width: 20rem;
+  }
+  @media (max-width: 408px) {
+    width: 16rem;
+  }
 `;
 
 export const Button = styled.div`
@@ -64,18 +76,10 @@ export const Content = styled.div`
 `;
 
 export const WrapperTask = styled.div`
-  padding: 1rem;
-`;
-
-export const InputWrapper = styled.div`
-  justify-content: center;
+  width: 100%;
+  gap: 0.5rem;
   display: flex;
-`;
-
-export const InputHeaderWrapper = styled.div`
-  justify-content: center;
-  display: flex;
-  margin-bottom: 1rem;
+  flex-direction: column;
 `;
 
 export const InputHeaderTitle = styled.h5`
@@ -84,15 +88,23 @@ export const InputHeaderTitle = styled.h5`
 `;
 
 export const Input = styled.input`
-  padding: 0.7rem;
+  height: 3rem;
+  padding-left: 1rem;
+  width: 100%;
   border-radius: 0.5rem;
-  border: 1px solid ${({ theme }) => theme.colors.textSecondary};
+  background-color: ${({ theme }) => theme.colors.inputBackgroundColor};
+  border: 1px solid ${({ theme }) => theme.colors.inputBorderColor};
+  transition: border-color 100ms linear;
+
+  &:focus {
+    border-color: ${({ theme }) => theme.colors.inputBorderColorActive};
+  }
 `;
 
 export const Footer = styled.div`
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
   display: flex;
   padding: 1rem;
   width: 100%;
@@ -105,17 +117,10 @@ export const ButtonSave = styled.button`
   justify-content: center;
   width: 20%;
   height: 2rem;
-  border: none;
   cursor: pointer;
-  border: 0.1rem solid ${({ theme }) => theme.colors.modalBorderColor};
+  border: 1px solid ${({ theme }) => theme.colors.modalBorderColor};
   border-radius: 0.3rem;
-  transition: background-color 100ms linear;
-  &:hover {
-    background-color: ${({ theme }) => theme.colors.lightMain};
-  }
-  &:active {
-    background-color: ${({ theme }) => theme.colors.buttonBackgroundActive};
-  }
+  transition: background-color 50ms linear;
 `;
 
 export const ButtonText = styled.h5`

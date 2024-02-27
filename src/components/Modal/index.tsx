@@ -1,7 +1,11 @@
+import { useState } from "react";
 import { IconX } from "@tabler/icons-react";
 import * as S from "./styles";
+import { ButtonStatus } from "../ButtonStatus";
 
 export const Modal = () => {
+  const [showModal, setShowModal] = useState(true);
+
   return (
     <S.Container>
       <S.ContentModal>
@@ -13,12 +17,11 @@ export const Modal = () => {
         </S.HeaderWrapper>
         <S.Content>
           <S.WrapperTask>
-            <S.InputHeaderWrapper>
-              <S.InputHeaderTitle>Tarefa</S.InputHeaderTitle>
-            </S.InputHeaderWrapper>
-            <S.InputWrapper>
-              <S.Input placeholder="Digite qual tarefa a ser adicionada" />
-            </S.InputWrapper>
+            <S.InputHeaderTitle>Tarefa</S.InputHeaderTitle>
+            <S.Input placeholder="Digite qual tarefa a ser adicionada" />
+            <ButtonStatus taskStatus="active" />
+            <ButtonStatus taskStatus="idle" />
+            <ButtonStatus taskStatus="success" />
           </S.WrapperTask>
         </S.Content>
         <S.Footer>
