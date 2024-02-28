@@ -19,7 +19,7 @@ export const Home: React.FC = () => {
 
   const handleFetch = useCallback(async () => {
     try {
-      const response = await HttpService.get("get");
+      const response = await HttpService.get("tasks");
       setTasks(response.data);
     } catch (error) {
       console.log(error);
@@ -27,6 +27,10 @@ export const Home: React.FC = () => {
       setIsLoading(false);
     }
   }, []);
+  useEffect(() => {
+    handleFetch();
+  }, [handleFetch]);
+
   return (
     <>
       <S.Container>
@@ -44,7 +48,7 @@ export const Home: React.FC = () => {
             </S.Button>
           </S.ShowTasksHeader>
           {tasks.map((item) => (
-            <ShowTask item={item} />
+            <ShowTask key={item.task_id} item={item} />
           ))}
         </S.ShowTasksWrapper>
       </S.Container>
