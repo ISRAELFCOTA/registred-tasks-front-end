@@ -106,7 +106,6 @@ export const SubTitleTask = styled.h5`
   font-size: 0.9rem;
   font-weight: 300;
   padding: 0.5rem;
-  border-bottom: 2px solid ${({ theme }) => theme.colors.modalBorderColor};
 `;
 
 export const Input = styled.input`

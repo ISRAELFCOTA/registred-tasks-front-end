@@ -38,7 +38,7 @@ export const ModalInfo = ({ taskData, onClose }: Props) => {
           <S.WrapperTask>
             <S.InputHeaderTitle>Status</S.InputHeaderTitle>
             <S.SubTitleTask>
-              {tasksStatusOptions[taskData.taskStatus]}
+              {tasksStatusOptions[taskData.taskStatus as 1 | 2 | 3]}
             </S.SubTitleTask>
           </S.WrapperTask>
           <S.WrapperTask>
