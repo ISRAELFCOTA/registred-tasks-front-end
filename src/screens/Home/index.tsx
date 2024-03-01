@@ -1,3 +1,4 @@
+// Importe useState
 import React, { useCallback, useEffect, useState } from "react";
 import { ShowTask } from "../../components/ShowTask";
 import logo from "../../assets/logo.png";
@@ -9,6 +10,10 @@ import { Modal } from "../../components/Modal";
 import { toast } from "react-toastify";
 import { ModalEdit } from "../../components/ModalEdit";
 import { ModalInfo } from "../../components/ModalInfo";
+import CustomSelect from "../../components/InputSearchBar";
+import { AxiosResponse } from "axios";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import { EmpityTask } from "../../components/EmpityTask";
 
 export const Home: React.FC = () => {
   const [tasks, setTasks] = useState<TaskDto[]>([]);
@@ -61,6 +66,57 @@ export const Home: React.FC = () => {
     setTasks(response.data);
   }, []);
 
+  const renderTasks = useCallback(() => {
+    if (isLoading) {
+      return (
+        <SkeletonTheme
+          baseColor="#303030"
+          highlightColor="#484848"
+          borderRadius={10}
+        >
+          <Skeleton
+            style={{ display: "flex", flex: 1, height: 24, width: "60%" }}
+            count={5}
+          />
+        </SkeletonTheme>
+      );
+    }
+    if (tasks.length === 0) {
+      return <EmpityTask />;
+    }
+    return tasks.map((item) => (
+      <ShowTask
+        fetchData={fetchData}
+        key={item.task_id}
+        item={item}
+        onClose={handleCloseModalEdit}
+        onShowModalEdit={() => handleEditTask(item)}
+        onShowModalInfo={() => handleShowInfo(item)}
+      />
+    ));
+  }, [
+    fetchData,
+    handleCloseModalEdit,
+    handleEditTask,
+    handleShowInfo,
+    isLoading,
+    tasks,
+  ]);
+
+  const handleChangeStatus = useCallback(async (status: number) => {
+    setIsLoading(true);
+    try {
+      const response: AxiosResponse<TaskDto[]> = await HttpService.get(
+        status === 4 ? `tasks` : `tasks/status/${status}`
+      );
+      setTasks(response.data);
+    } catch (error) {
+      toast.error("Não foi possível filtrar as tarefas.");
+    } finally {
+      setIsLoading(false);
+    }
+  }, []);
+
   const handleFetch = useCallback(async () => {
     setIsLoading(true);
     try {
@@ -71,6 +127,7 @@ export const Home: React.FC = () => {
       setIsLoading(false);
     }
   }, [fetchData]);
+
   useEffect(() => {
     handleFetch();
   }, [handleFetch]);
@@ -87,20 +144,14 @@ export const Home: React.FC = () => {
               <S.Logo src={logo} />
               <S.ShowTasksHeaderTitle>Tarefas</S.ShowTasksHeaderTitle>
             </S.WrapperLogoTaskTitle>
+            {/* Atualize o CustomSelect para passar a função handleCustomSelectChange */}
+            <CustomSelect onChange={handleChangeStatus} />
             <S.Button onClick={handleOpenModal}>
+              <S.ButtonText>Adcionar</S.ButtonText>
               <IconPlus />
             </S.Button>
           </S.ShowTasksHeader>
-          {tasks.map((item) => (
-            <ShowTask
-              fetchData={fetchData}
-              key={item.task_id}
-              item={item}
-              onClose={handleCloseModalEdit}
-              onShowModalEdit={() => handleEditTask(item)}
-              onShowModalInfo={() => handleShowInfo(item)}
-            />
-          ))}
+          <S.TasksWrapper>{renderTasks()}</S.TasksWrapper>
         </S.ShowTasksWrapper>
       </S.Container>
       {showModal && <Modal fetchData={fetchData} onClose={handleCloseModal} />}

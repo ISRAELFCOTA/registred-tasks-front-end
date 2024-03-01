@@ -17,12 +17,17 @@ export const Logo = styled.img`
 `;
 
 export const ShowTasksWrapper = styled.div`
-  background-color: ${({ theme }) => theme.colors.modalBackgroundColor};
-  border-top: 0.1rem solid ${({ theme }) => theme.colors.modalBorderColor};
-  border-left: 0.1rem solid ${({ theme }) => theme.colors.modalBorderColor};
-  border-right: 0.1rem solid ${({ theme }) => theme.colors.modalBorderColor};
-  border-top-left-radius: 0.5rem;
-  border-top-right-radius: 0.5rem;
+  background-color: #161616;
+
+  border-radius: 0.5rem;
+  border: 1px solid #363636;
+`;
+
+export const TasksWrapper = styled.div`
+  width: 100%;
+  flex-direction: column;
+  display: flex;
+  gap: 0.5rem;
 `;
 
 export const WrapperLogoTaskTitle = styled.div`
@@ -49,21 +54,27 @@ export const ShowTasksHeaderTitle = styled.h3`
 
 export const Button = styled.button`
   background-color: ${({ theme }) => theme.colors.buttonBackground};
-  width: 2rem;
-  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 0.6rem;
+  padding-bottom: 0.6rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
   border: none;
   cursor: pointer;
-  border-radius: 50%;
-  transition: background-color 100ms linear;
-  &:hover {
-    background-color: ${({ theme }) => theme.colors.buttonBackgroundHover};
-  }
+  border-radius: 0.5rem;
+  gap: 1rem;
+  transition: opacity 100ms linear;
   &:active {
-    background-color: ${({ theme }) => theme.colors.buttonBackgroundActive};
+    opacity: 0.5;
+  }
+  &:hover {
+    opacity: 0.75;
   }
 `;
 
-export const TextButton = styled.h5`
+export const ButtonText = styled.h5`
   font-size: 1rem;
-  font-weight: bold;
+  font-weight: 600;
 `;
