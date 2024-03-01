@@ -29,7 +29,7 @@ export const WrapperLogoTaskTitle = styled.div`
   flex-direction: row;
   display: flex;
   align-items: center;
-  width: 100%
+  width: 100%;
 `;
 
 export const ShowTasksHeader = styled.div`
@@ -61,4 +61,9 @@ export const Button = styled.button`
   &:active {
     background-color: ${({ theme }) => theme.colors.buttonBackgroundActive};
   }
+`;
+
+export const TextButton = styled.h5`
+  font-size: 1rem;
+  font-weight: bold;
 `;
