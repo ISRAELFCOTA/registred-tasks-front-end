@@ -1,6 +1,6 @@
 import { memo, useCallback, useState } from "react";
 import { IconEdit, IconTrash, IconZoomInArea } from "@tabler/icons-react";
-import { TaskDto } from "../../dto/task";
+import { TaskDto, TaskStatus } from "../../dto/task";
 import { HttpService } from "../../service/httpService";
 import { toast } from "react-toastify";
 import * as S from "./style";
@@ -32,11 +32,23 @@ export const ShowTask = memo(
       }
     }, [fetchData, item.task_id, onClose]);
 
+    const statusColors: Record<TaskStatus, string> = {
+      1: "#18B600",
+      2: "#FFEA00",
+      3: "#BD0000",
+      4: "",
+    };
+
+    const color = statusColors[item.taskStatus];
+
     return (
       <>
         <S.Container>
           <S.TaskWrapper>
-            <S.TaskTitle>{item.taskName}</S.TaskTitle>
+            <S.TaskHeader>
+              <S.TaskStatusColor bgColor={color} />
+              <S.TaskTitle>{item.taskName}</S.TaskTitle>
+            </S.TaskHeader>
             <S.ButtonWrapper>
               <S.Button onClick={onShowModalInfo}>
                 <IconZoomInArea />

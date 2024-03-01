@@ -48,3 +48,16 @@ export const Button = styled.button`
     background-color: ${({ theme }) => theme.colors.buttonBackgroundActive};
   }
 `;
+
+export const TaskHeader = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+`;
+
+export const TaskStatusColor = styled.div<{ bgColor: string }>`
+  background-color: ${({ bgColor }) => bgColor};
+  padding: 0.5rem;
+  border-radius: 60%;
+`;
