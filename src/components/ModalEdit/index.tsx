@@ -34,17 +34,13 @@ export const ModalEdit = ({ taskData, onClose, fetchData, isOpen }: Props) => {
         taskName: task,
         taskStatus: taskStatus,
       });
-      console.log({
-        taskName: task,
-        taskStatus: taskStatus,
-      });
+
       await fetchData();
       setTask("");
       // setTaskStatus(2);
       onClose();
       toast.success("Tarefa editada com sucesso!");
     } catch (error) {
-      console.log(error);
       toast.error("Erro ao editar tarefa!");
     } finally {
       setIsLoading(false);
@@ -59,7 +55,6 @@ export const ModalEdit = ({ taskData, onClose, fetchData, isOpen }: Props) => {
     if (isOpen) {
       setTask(taskData.taskName);
       setTaskStatus(taskData.taskStatus);
-      console.log(taskData);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
