@@ -47,11 +47,7 @@ export const ShowTask = memo(
 
               <S.Button onClick={handleDelete} disabled={isLoading}>
                 {isLoading ? (
-                  <ClipLoader
-                    color="#fff"
-                    size={24}
-                    cssOverride={{ marginInline: "0.75rem" }}
-                  />
+                  <ClipLoader color="#fff" size={20} />
                 ) : (
                   <IconTrash />
                 )}

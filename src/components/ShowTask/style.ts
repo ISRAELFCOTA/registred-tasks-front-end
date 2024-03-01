@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 export const Container = styled.div`
   background-color: ${({ theme }) => theme.colors.modalBackgroundColor};
 `;
@@ -15,13 +16,13 @@ export const TaskWrapper = styled.div`
 `;
 
 export const TaskSeparator = styled.div`
-  height: 2px;
+  height: 1px;
   background-color: ${({ theme }) => theme.colors.modalBorderColor};
 `;
 
 export const TaskTitle = styled.h4`
-  font-size: 1rem;
-  font-weight: bold;
+  font-size: 1.2rem;
+  font-weight: 600;
 `;
 
 export const ButtonWrapper = styled.div`
@@ -34,8 +35,8 @@ export const Button = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 2rem;
-  height: 2rem;
+  width: 3rem;
+  height: 3rem;
   border: none;
   cursor: pointer;
   border-radius: 50%;
