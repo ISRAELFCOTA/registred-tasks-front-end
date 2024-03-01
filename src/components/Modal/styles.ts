@@ -67,12 +67,22 @@ export const Button = styled.div`
 `;
 
 export const Content = styled.div`
-  flex-direction: row;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
   justify-content: center;
   display: flex;
   padding: 1rem;
   width: 100%;
+  gap: 1rem;
+`;
+export const WrapperSelectStatus = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  @media (max-width: 640px) {
+    flex-direction: column;
+  }
 `;
 
 export const WrapperTask = styled.div`
@@ -112,18 +122,28 @@ export const Footer = styled.div`
 `;
 
 export const ButtonSave = styled.button`
+  background-color: ${({ theme }) => theme.colors.buttonBackground};
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 20%;
-  height: 2rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  border: none;
   cursor: pointer;
-  border: 1px solid ${({ theme }) => theme.colors.modalBorderColor};
-  border-radius: 0.3rem;
-  transition: background-color 50ms linear;
+  border-radius: 0.5rem;
+  gap: 1rem;
+  transition: opacity 100ms linear;
+  &:active {
+    opacity: 0.5;
+  }
+  &:hover {
+    opacity: 0.75;
+  }
 `;
 
 export const ButtonText = styled.h5`
   font-size: 1rem;
-  font-weight: 300;
+  font-weight: 600;
 `;
