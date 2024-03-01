@@ -5,5 +5,12 @@ export type TaskDto = {
   createDateTask: string;
   updateDateTask: string;
 };
+// 1 = SUCCESS
+// 2 = ACTING
+// 3 = STOPPED
+export type TaskStatus = 1 | 2 | 3;
 
-export type TaskStatus = "success" | "idle" | "active";
+export type TaskStatusType = {
+  status: TaskStatus;
+  label: string;
+};
