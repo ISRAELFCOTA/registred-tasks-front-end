@@ -6,27 +6,71 @@ import { IconPlus } from "@tabler/icons-react";
 import { TaskDto } from "../../dto/task";
 import { HttpService } from "../../service/httpService";
 import { Modal } from "../../components/Modal";
+import { toast } from "react-toastify";
+import { ModalEdit } from "../../components/ModalEdit";
+import { ModalInfo } from "../../components/ModalInfo";
 
 export const Home: React.FC = () => {
   const [tasks, setTasks] = useState<TaskDto[]>([]);
   const [showModal, setShowModal] = useState(false);
+  const [showModalEdit, setShowModalEdit] = useState(false);
+  const [showModalInfo, setShowModalInfo] = useState(false);
+  const [taskSelected, setSelectedTask] = useState({} as TaskDto);
   const [isLoading, setIsLoading] = useState(false);
-  useEffect(() => {
-    if (showModal) {
-      console.log("Modal renderizado!");
-    }
-  }, [showModal]);
+
+  const handleCloseModal = useCallback(() => {
+    setShowModal(false);
+  }, []);
+
+  const handleOpenModal = useCallback(() => {
+    setShowModal(true);
+  }, []);
+  const handleCloseModalEdit = useCallback(() => {
+    setShowModalEdit(false);
+  }, []);
+
+  const handleOpenModalEdit = useCallback(() => {
+    setShowModalEdit(true);
+  }, []);
+
+  const handleEditTask = useCallback(
+    (task: TaskDto) => {
+      setSelectedTask(task);
+      handleOpenModalEdit();
+    },
+    [handleOpenModalEdit]
+  );
+  const handleCloseModalInfo = useCallback(() => {
+    setShowModalInfo(false);
+  }, []);
+
+  const handleOpenModalInfo = useCallback(() => {
+    setShowModalInfo(true);
+  }, []);
+
+  const handleShowInfo = useCallback(
+    (task: TaskDto) => {
+      setSelectedTask(task);
+      handleOpenModalInfo();
+    },
+    [handleOpenModalInfo]
+  );
+
+  const fetchData = useCallback(async () => {
+    const response = await HttpService.get("tasks");
+    setTasks(response.data);
+  }, []);
 
   const handleFetch = useCallback(async () => {
+    setIsLoading(true);
     try {
-      const response = await HttpService.get("tasks");
-      setTasks(response.data);
+      await fetchData();
     } catch (error) {
-      console.log(error);
+      toast.error("Não foi possivel carregar as tarefas.");
     } finally {
       setIsLoading(false);
     }
-  }, []);
+  }, [fetchData]);
   useEffect(() => {
     handleFetch();
   }, [handleFetch]);
@@ -43,16 +87,34 @@ export const Home: React.FC = () => {
               <S.Logo src={logo} />
               <S.ShowTasksHeaderTitle>Tarefas</S.ShowTasksHeaderTitle>
             </S.WrapperLogoTaskTitle>
-            <S.Button onClick={() => setShowModal(true)}>
+            <S.Button onClick={handleOpenModal}>
               <IconPlus />
             </S.Button>
           </S.ShowTasksHeader>
           {tasks.map((item) => (
-            <ShowTask key={item.task_id} item={item} />
+            <ShowTask
+              fetchData={fetchData}
+              key={item.task_id}
+              item={item}
+              onClose={handleCloseModalEdit}
+              onShowModalEdit={() => handleEditTask(item)}
+              onShowModalInfo={() => handleShowInfo(item)}
+            />
           ))}
         </S.ShowTasksWrapper>
       </S.Container>
-      {showModal && <Modal />}
+      {showModal && <Modal fetchData={fetchData} onClose={handleCloseModal} />}
+      {showModalEdit && (
+        <ModalEdit
+          fetchData={fetchData}
+          taskData={taskSelected}
+          onClose={handleCloseModalEdit}
+          isOpen={showModalEdit}
+        />
+      )}
+      {showModalInfo && (
+        <ModalInfo taskData={taskSelected} onClose={handleCloseModalInfo} />
+      )}
     </>
   );
 };
