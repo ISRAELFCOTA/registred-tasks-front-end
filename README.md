@@ -6,6 +6,11 @@ Informações adicionais ou linha de tag.
 
 Este projeto é uma aplicação front-end construída com React e Typescript.
 
+# Incialização do projeto
+
+```bash
+yarn/npm run dev
+````
 
 # Configurando o Ambiente de Desenvolvimento
 
@@ -14,6 +19,7 @@ git clone https://github.com/ISRAELFCOTA/registred-tasks-front-end.git
 cd registred-tasks-front-end
 yarn ou npm install
 ````
+
 
 Com isso irá trazer o projeto para seu diretório, entrando na pasta, com yarn ou npm install irá instalar todas as bibliotecas e dependencias que será necessario para iniciar a api.
 
