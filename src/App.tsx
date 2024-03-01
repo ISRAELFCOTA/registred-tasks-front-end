@@ -1,10 +1,20 @@
-import { ThemeProvider } from "styled-components";
 import "./App.css";
 import GlobalStyle from "./globalStyle";
 import { theme } from "./theme/theme";
 import { Home } from "./screens/Home";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import "react-loading-skeleton/dist/skeleton.css";
+import { ThemeProvider } from "styled-components";
+
+// can add other routes if needed
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Home />,
+  },
+]);
 
 function App() {
   return (
@@ -22,7 +32,7 @@ function App() {
         pauseOnHover
         theme="dark"
       />
-      <Home />
+      <RouterProvider router={router} />
     </ThemeProvider>
   );
 }
