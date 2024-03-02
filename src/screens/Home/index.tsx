@@ -109,6 +109,7 @@ export const Home: React.FC = () => {
       const response: AxiosResponse<TaskDto[]> = await HttpService.get(
         status === 4 ? `tasks` : `tasks/status/${status}`
       );
+      console.log(response.data);
       setTasks(response.data);
     } catch (error) {
       toast.error("Não foi possível filtrar as tarefas.");
@@ -144,7 +145,6 @@ export const Home: React.FC = () => {
               <S.Logo src={logo} />
               <S.ShowTasksHeaderTitle>Tarefas</S.ShowTasksHeaderTitle>
             </S.WrapperLogoTaskTitle>
-            {/* Atualize o CustomSelect para passar a função handleCustomSelectChange */}
             <CustomSelect onChange={handleChangeStatus} />
             <S.Button onClick={handleOpenModal}>
               <S.ButtonText>Adcionar</S.ButtonText>
